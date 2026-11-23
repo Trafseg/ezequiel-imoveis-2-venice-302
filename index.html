@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Apartamento à venda – Venice Home Club · Venice Home Club 302 | Ezequiel Maia</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111111;--muted:#5b5b5b;--line:#e6e6e6;--green:#25D366}
+*{box-sizing:border-box}
+body{margin:0;font-family:Poppins,Arial,sans-serif;color:var(--ink);background:#ffffff}
+button,input{font:inherit}
+.wrap{max-width:640px;margin:0 auto;padding:18px 18px 28px}
+.brand{font-size:18px;font-weight:800;letter-spacing:-.3px;line-height:1.1}
+.brand small{display:block;font-size:9px;letter-spacing:2.4px;color:var(--muted);font-weight:500;margin-top:4px}
+.hero{display:block;width:100%;height:300px;object-fit:cover;border-radius:14px;margin-top:18px;background:#eee}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.thumbs img{display:block;width:100%;height:96px;object-fit:cover;border-radius:10px;background:#eee}
+.tag{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin:24px 0 8px}
+h1{font-size:27px;line-height:1.22;letter-spacing:-.7px;margin:0 0 12px;font-weight:800}
+.specs{font-size:14px;line-height:1.6;color:#333;margin:0 0 6px}
+.preco{font-size:24px;font-weight:800;margin:8px 0 22px}
+label{display:block;font-size:12px;font-weight:600;margin:14px 0 6px}
+input{width:100%;padding:14px;border:1px solid #cfcfcf;border-radius:10px;font-size:16px;color:var(--ink);background:#fff}
+input::placeholder{color:#9a9a9a}
+input:focus{outline:2px solid var(--ink);outline-offset:1px}
+.erro{color:#D93025;font-size:12px;min-height:18px;margin:10px 0 0}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:8px;padding:18px;border:0;border-radius:12px;background:var(--green);color:#072812;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 8px 24px rgba(37,211,102,.25)}
+.btn:hover{background:#1fbb5c}
+.btn:focus-visible,input:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.micro{font-size:11px;color:var(--muted);text-align:center;margin:12px 0 0;line-height:1.6}
+footer{margin-top:30px;border-top:1px solid var(--line);padding-top:14px;font-size:10px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:560px){.wrap{padding:14px 16px 22px}h1{font-size:22px}.hero{height:230px}.thumbs img{height:74px}.preco{font-size:20px}}
+</style>
+<!-- Meta Pixel — Ezequiel Maia -->
+<script>
+const PIXEL_ID='2348304345998421';
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init',PIXEL_ID);
+fbq('track','PageView');
+</script>
+</head>
+<body>
+<div class="wrap">
+<header><div class="brand">Ezequiel Maia<small>PROPRIETÁRIO</small></div></header>
+
+<img class="hero" src="FOTOS/f02.jpeg" alt="Foto do imóvel">
+<div class="thumbs">
+<img src="FOTOS/f28.jpeg" alt="Foto do imóvel" loading="lazy">
+<img src="FOTOS/f33.jpeg" alt="Foto do imóvel" loading="lazy">
+<img src="FOTOS/f11.jpeg" alt="Foto do imóvel" loading="lazy">
+</div>
+
+<div class="tag">Apartamento à venda · Itacolomi, Balneário Piçarras/SC</div>
+<h1>Apartamento de 3 quartos a poucos passos da praia, no Venice Home Club</h1>
+<p class="specs">3 quartos (1 suíte) · 93 m² · 3º andar</p>
+<p class="preco">R$ 1.290.000</p>
+
+<form id="form" novalidate>
+<label for="nome">Seu nome</label>
+<input id="nome" autocomplete="name" placeholder="Digite seu nome completo" maxlength="80">
+<label for="tel">Seu WhatsApp com DDD</label>
+<input id="tel" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(47) 99999-9999" maxlength="16">
+<p class="erro" id="erro" role="alert"></p>
+<button class="btn" type="submit" id="btn">💬 Falar agora com o proprietário</button>
+<p class="micro">Ao clicar, o WhatsApp abre com a sua mensagem pronta para o Ezequiel.</p>
+</form>
+
+<footer><span>Ezequiel Proprietário</span><span>Venice Home Club 302</span></footer>
+</div>
+<noscript>Ative o JavaScript do navegador para enviar seus dados.</noscript>
+<script>
+'use strict';
+const WHATSAPP_NUMERO='5547996913998';
+const IMOVEL='venice-302';
+const IMOVEL_TITULO='Venice Home Club 302';
+const PLANILHA_WEBHOOK='https://script.google.com/macros/s/AKfycbzNYYkSJIUXOvI5tJUHYW2J-MaDSaQ6jfHthEgKOFH2zKd1pYQcvzgh-CYiUU2j_0Hxog/exec';
+const form=document.getElementById('form'),nome=document.getElementById('nome'),tel=document.getElementById('tel'),erro=document.getElementById('erro');
+const track=(...args)=>{if(window.fbq)fbq(...args);};
+const cookie=name=>(document.cookie.match('(?:^|; )'+name+'=([^;]*)')||[])[1]||'';
+const URL_PARAMS=new URLSearchParams(location.search);
+const ORIGEM={ad:(URL_PARAMS.get('utm_content')||'').trim(),adset:URL_PARAMS.get('utm_term')||'',campaign:URL_PARAMS.get('utm_campaign')||'',source:URL_PARAMS.get('utm_source')||''};
+const novoId=p=>p+'-'+Date.now()+'-'+Math.random().toString(36).slice(2,10);
+const enviarPlanilha=payload=>{if(PLANILHA_WEBHOOK)fetch(PLANILHA_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).catch(()=>{});};
+
+tel.addEventListener('input',()=>{let digits=tel.value.replace(/\D/g,'');if(digits.startsWith('55')&&digits.length>11)digits=digits.slice(2);digits=digits.slice(0,11);tel.value=digits.length>2?'('+digits.slice(0,2)+') '+digits.slice(2,digits.length>10?7:6)+(digits.length>6?'-'+digits.slice(digits.length>10?7:6):''):digits;});
+
+track('track','ViewContent');
+
+form.onsubmit=event=>{
+ event.preventDefault();
+ const n=nome.value.trim();
+ const d=tel.value.replace(/\D/g,'').replace(/^55(?=\d{10,11}$)/,'');
+ if(n.length<2){erro.textContent='Informe seu nome.';nome.focus();return;}
+ if(!/^[1-9]{2}\d{8,9}$/.test(d)){erro.textContent='Informe um WhatsApp válido com DDD.';tel.focus();return;}
+ erro.textContent='';
+ const leadId=novoId('lead');
+ const eventId=novoId('lead');
+ const message='Olá, Ezequiel! Tenho interesse no imóvel: '+IMOVEL_TITULO+'. Meu nome é '+n+'. Podemos conversar?';
+ const link='https://wa.me/'+WHATSAPP_NUMERO+'?text='+encodeURIComponent(message);
+ // Lead concluído: planilha + evento Lead (pixel e API de Conversões, mesmo eventID) + conversão de nome e WhatsApp
+ track('trackCustom','EtapaWhatsApp');
+ track('track','Lead',{content_name:IMOVEL_TITULO},{eventID:eventId});
+ track('track','Contact');
+ const payload={name:n,phone:tel.value,age:'',occupation:'',whatsappLink:'https://wa.me/55'+d,imovel:IMOVEL,status:'Completo',leadId,eventId,fbp:cookie('_fbp'),fbc:cookie('_fbc'),pageUrl:location.href,userAgent:navigator.userAgent};
+ Object.assign(payload,ORIGEM);
+ enviarPlanilha(payload);
+ window.open(link,'_blank','noopener');
+};
+</script>
+</body>
+</html>
