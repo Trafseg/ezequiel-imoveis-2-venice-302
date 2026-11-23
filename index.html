@@ -15,6 +15,11 @@ body{margin:0;font-family:Poppins,Arial,sans-serif;color:var(--ink);background:#
 .carrossel{position:relative;width:100%;height:300px;border-radius:14px;overflow:hidden;margin-top:18px;background:#eee}
 .slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease}
 .slide.on{opacity:1}
+.dots{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:6px;z-index:2}
+.dot{width:7px;height:7px;border-radius:99px;background:rgba(255,255,255,.55);box-shadow:0 0 0 1px rgba(0,0,0,.18);transition:width .4s ease,background .4s ease}
+.dot.on{width:20px;background:#fff}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.thumbs img{display:block;width:100%;height:96px;object-fit:cover;border-radius:10px;background:#eee}
 .tag{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin:24px 0 8px}
 h1{font-size:27px;line-height:1.22;letter-spacing:-.7px;margin:0 0 12px;font-weight:800}
 .specs{font-size:11px;line-height:1.6;color:#333;margin:0 0 6px}
@@ -24,7 +29,7 @@ h1{font-size:27px;line-height:1.22;letter-spacing:-.7px;margin:0 0 12px;font-wei
 .btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 .micro{font-size:11px;color:var(--muted);text-align:center;margin:12px 0 0;line-height:1.6}
 footer{margin-top:30px;border-top:1px solid var(--line);padding-top:14px;font-size:10px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media(max-width:560px){.wrap{padding:14px 16px 22px}h1{font-size:22px}.carrossel{height:230px}.preco{font-size:15px}.specs{font-size:10.5px}.tag{font-size:8.5px}}
+@media(max-width:560px){.wrap{padding:14px 16px 22px}h1{font-size:22px}.carrossel{height:230px}.thumbs img{height:74px}.preco{font-size:15px}.specs{font-size:10.5px}.tag{font-size:8.5px}}
 </style>
 <!-- Meta Pixel — Ezequiel Maia -->
 <script>
@@ -47,6 +52,12 @@ fbq('track','PageView');
 <img class="slide" src="FOTOS/f28.jpeg" alt="Foto do imóvel">
 <img class="slide" src="FOTOS/f33.jpeg" alt="Foto do imóvel">
 <img class="slide" src="FOTOS/f11.jpeg" alt="Foto do imóvel">
+<div class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+</div>
+<div class="thumbs">
+<img src="FOTOS/f28.jpeg" alt="Foto do imóvel" loading="lazy">
+<img src="FOTOS/f33.jpeg" alt="Foto do imóvel" loading="lazy">
+<img src="FOTOS/f11.jpeg" alt="Foto do imóvel" loading="lazy">
 </div>
 
 <div class="tag">Apartamento à venda · Itacolomi, Balneário Piçarras/SC</div>
@@ -79,12 +90,15 @@ track('track','ViewContent');
 // Carrossel automático das fotos do topo (troca a cada 4 segundos)
 (function(){
  const slides=[...document.querySelectorAll('#carrossel .slide')];
+ const dots=[...document.querySelectorAll('#carrossel .dot')];
  if(slides.length<2)return;
  let atual=0;
  setInterval(()=>{
   slides[atual].classList.remove('on');
+  dots[atual].classList.remove('on');
   atual=(atual+1)%slides.length;
   slides[atual].classList.add('on');
+  dots[atual].classList.add('on');
  },4000);
 })();
 
