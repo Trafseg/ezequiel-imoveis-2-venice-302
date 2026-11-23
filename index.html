@@ -24,12 +24,14 @@ body{margin:0;font-family:Poppins,Arial,sans-serif;color:var(--ink);background:#
 h1{font-size:27px;line-height:1.22;letter-spacing:-.7px;margin:0 0 12px;font-weight:800}
 .specs{font-size:11px;line-height:1.6;color:#333;margin:0 0 6px}
 .preco{font-size:17px;font-weight:800;margin:6px 0 22px}
-.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:6px;padding:18px;border:0;border-radius:12px;background:var(--green);color:#072812;font:inherit;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 8px 24px rgba(37,211,102,.25);text-decoration:none}
-.btn:hover{background:#1fbb5c}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:6px;padding:22px 18px;border:0;border-radius:14px;background:var(--green);color:#052a12;font:inherit;font-weight:800;font-size:18px;letter-spacing:-.2px;cursor:pointer;box-shadow:0 10px 30px rgba(37,211,102,.45),0 0 0 4px rgba(37,211,102,.18);text-decoration:none;animation:pulso 2.2s ease-in-out infinite;transition:transform .2s ease,background .2s ease}
+.btn:hover{background:#1fbb5c;transform:translateY(-2px)}
+@keyframes pulso{0%,100%{box-shadow:0 10px 30px rgba(37,211,102,.45),0 0 0 4px rgba(37,211,102,.18)}50%{box-shadow:0 12px 38px rgba(37,211,102,.6),0 0 0 10px rgba(37,211,102,.08)}}
+@media(prefers-reduced-motion:reduce){.btn{animation:none}}
 .btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 .micro{font-size:11px;color:var(--muted);text-align:center;margin:12px 0 0;line-height:1.6}
 footer{margin-top:30px;border-top:1px solid var(--line);padding-top:14px;font-size:10px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media(max-width:560px){.wrap{padding:14px 16px 22px}h1{font-size:22px}.carrossel{height:230px}.thumbs img{height:74px}.preco{font-size:15px}.specs{font-size:10.5px}.tag{font-size:8.5px}}
+@media(max-width:560px){.wrap{padding:14px 16px 22px}h1{font-size:22px}.carrossel{height:230px}.thumbs img{height:74px}.btn{font-size:17px;padding:20px 14px}.preco{font-size:15px}.specs{font-size:10.5px}.tag{font-size:8.5px}}
 </style>
 <!-- Meta Pixel — Ezequiel Maia -->
 <script>
