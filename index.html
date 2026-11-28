@@ -15,9 +15,11 @@ body{margin:0;font-family:Poppins,Arial,sans-serif;color:var(--ink);background:#
 .carrossel{position:relative;width:100%;height:300px;border-radius:14px;overflow:hidden;margin-top:18px;background:#eee}
 .slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease}
 .slide.on{opacity:1}
-.dots{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:6px;z-index:2}
-.dot{width:7px;height:7px;border-radius:99px;background:rgba(255,255,255,.55);box-shadow:0 0 0 1px rgba(0,0,0,.18);transition:width .4s ease,background .4s ease}
-.dot.on{width:20px;background:#fff}
+.seta{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.75);color:#111;font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.2);padding:0 0 3px}
+.seta:hover{background:#fff}
+.seta.esq{left:10px}.seta.dir{right:10px}
+.seta:focus-visible{outline:2px solid #111;outline-offset:2px}
+.contador{position:absolute;right:12px;bottom:12px;z-index:2;background:rgba(0,0,0,.45);color:#fff;font-size:10px;padding:4px 9px;border-radius:99px;letter-spacing:.3px}
 .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
 .thumbs img{display:block;width:100%;height:96px;object-fit:cover;border-radius:10px;background:#eee}
 .tag{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin:24px 0 8px}
@@ -51,11 +53,9 @@ fbq('track','PageView');
 <header><div class="brand">Ezequiel Maia<small>PROPRIETÁRIO</small></div></header>
 
 <div class="carrossel" id="carrossel" aria-label="Fotos do imóvel">
-<img class="slide on" src="FOTOS/f02.jpeg" alt="Foto do imóvel">
-<img class="slide" src="FOTOS/f28.jpeg" alt="Foto do imóvel">
-<img class="slide" src="FOTOS/f33.jpeg" alt="Foto do imóvel">
-<img class="slide" src="FOTOS/f11.jpeg" alt="Foto do imóvel">
-<div class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+<button class="seta esq" id="anterior" type="button" aria-label="Foto anterior">‹</button>
+<button class="seta dir" id="proxima" type="button" aria-label="Próxima foto">›</button>
+<div class="contador" id="contador" aria-live="polite"></div>
 </div>
 <div class="thumbs">
 <img src="FOTOS/f28.jpeg" alt="Foto do imóvel" loading="lazy">
@@ -90,19 +90,22 @@ const enviarPlanilha=payload=>{if(PLANILHA_WEBHOOK)fetch(PLANILHA_WEBHOOK,{metho
 
 track('track','ViewContent');
 
-// Carrossel automático das fotos do topo (troca a cada 4 segundos)
+// Carrossel de todas as fotos do imóvel: passa sozinho a cada 4 segundos e o visitante pode usar as setas.
 (function(){
- const slides=[...document.querySelectorAll('#carrossel .slide')];
- const dots=[...document.querySelectorAll('#carrossel .dot')];
- if(slides.length<2)return;
- let atual=0;
- setInterval(()=>{
-  slides[atual].classList.remove('on');
-  dots[atual].classList.remove('on');
-  atual=(atual+1)%slides.length;
-  slides[atual].classList.add('on');
-  dots[atual].classList.add('on');
- },4000);
+ const FOTOS=["f02.jpeg","f03.jpeg","f04.jpeg","f05.jpeg","f06.jpeg","f07.jpeg","f08.jpeg","f09.jpeg","f10.jpeg","f11.jpeg","f12.jpeg","f13.jpeg","f14.jpeg","f15.jpeg","f16.jpeg","f17.jpeg","f18.jpeg","f19.jpeg","f20.jpeg","f21.jpeg","f22.jpeg","f23.jpeg","f24.jpeg","f25.jpeg","f26.jpeg","f27.jpeg","f28.jpeg","f29.jpeg","f30.jpeg","f31.jpeg","f32.jpeg","f33.jpeg","f34.jpeg","f35.jpeg","f36.jpeg"];
+ const car=document.getElementById('carrossel');
+ const contador=document.getElementById('contador');
+ const frag=document.createDocumentFragment();
+ FOTOS.forEach((arquivo,i)=>{const img=document.createElement('img');img.className='slide';img.src='FOTOS/'+arquivo;img.alt='Foto '+(i+1)+' do imóvel';img.loading=i<2?'eager':'lazy';frag.appendChild(img);});
+ car.insertBefore(frag,car.firstChild);
+ const slides=[...car.querySelectorAll('.slide')];
+ const total=slides.length;
+ let atual=0,timer=null;
+ const mostrar=i=>{atual=(i+total)%total;slides.forEach((s,k)=>s.classList.toggle('on',k===atual));contador.textContent=(atual+1)+' / '+total;};
+ const iniciar=()=>{clearInterval(timer);if(total>1)timer=setInterval(()=>mostrar(atual+1),4000);};
+ document.getElementById('anterior').onclick=()=>{mostrar(atual-1);iniciar();};
+ document.getElementById('proxima').onclick=()=>{mostrar(atual+1);iniciar();};
+ mostrar(0);iniciar();
 })();
 
 // Clicar no botão é o lead: vai para a planilha, dispara o evento Lead (pixel e API de Conversões, mesmo eventID) e abre o WhatsApp com a mensagem pronta.
